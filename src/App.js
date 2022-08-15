@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { Route, Switch } from "react-router-dom";
+import Favourites from "./components/Favourites";
+import Stats from "./components/Stats";
+import SearchMUI from "./components/SearchMUI";
+import DashboardMUI from "./components/DashboardMUI";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <DashboardMUI />
+      <Switch>
+        <Route component={SearchMUI} path="/" exact/>
+        <Route component={SearchMUI} path="/search" exact/>
+        <Route component={Favourites} path="/favourites" exact />
+        <Route component={Stats} path="/stats" exact />
+      </Switch>
     </div>
   );
 }
